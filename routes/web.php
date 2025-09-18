@@ -29,7 +29,7 @@ Route::get('/', function () {
             ]
         ]
     ]);
-});
+})->name('questions.index');
 
 // ini url yang di tuju
 Route::get('/questions/{question}', function ($question) {
