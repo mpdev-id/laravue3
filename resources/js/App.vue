@@ -1,3 +1,0 @@
-<template>
-    hallo test
-</template>

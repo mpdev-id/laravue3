@@ -13,8 +13,9 @@
                  background-image: url('bg.svg')
             }
         </style>
-    </head>
+      @inertiaHead
+  </head>
   <body>
-    <div id="app"></div>
+    @inertia
   </body>
 </html>
