@@ -1,9 +1,16 @@
 <?php
 
+use App\Http\Resources\QuestionResource;
+use App\Models\Question;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', function () {
+
+    return QuestionResource::collection(
+      Question::with('user')->latest()->paginate(15)
+    );
+
     return Inertia::render('Questions/Index', [
         'questions' => [
             [
@@ -34,7 +41,7 @@ Route::get('/', function () {
 // ini url yang di tuju
 Route::get('/questions/{question}', function ($question) {
     // returnnya page yang di buat di js
-    return Inertia::render('Questions/Show', [ 
+    return Inertia::render('Questions/Show', [
         'question' => [
             'id' => $question,
             'title' => "Question $question",
@@ -42,6 +49,6 @@ Route::get('/questions/{question}', function ($question) {
             'created_at' => now(),
             'answers_count' => 0
         ]
-        
+
     ]);
 })->name('questions.show');

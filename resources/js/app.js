@@ -2,10 +2,16 @@ import './bootstrap';
 import * as bootstrap from 'bootstrap';
 
 import { createApp, h } from 'vue'
+
 import { createInertiaApp } from '@inertiajs/vue3'
-import { Ziggyvue } from 'ziggy-js'
+
+import { ZiggyVue } from 'ziggyjs'
+
+
+
 
 createInertiaApp({
+  title: title => `${title} - Laravel`,
   resolve: name => {
     const pages = import.meta.glob('./Pages/**/*.vue', { eager: true })
     return pages[`./Pages/${name}.vue`]
@@ -13,7 +19,7 @@ createInertiaApp({
   setup({ el, App, props, plugin }) {
     createApp({ render: () => h(App, props) })
       .use(plugin)
-      .use(Ziggyvue)
+      .use(ZiggyVue)
       .mount(el)
   },
 })
